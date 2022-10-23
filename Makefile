@@ -194,9 +194,14 @@ $(BUILD_DIR):
 #######################################
 clean:
 	-rm -fR $(BUILD_DIR)
-  
+
+
+#######################################
+# download to board
+####################################### 
 download:
 	openocd -f /opt/homebrew/Cellar/open-ocd/0.11.0/share/openocd/scripts/interface/cmsis-dap.cfg -f /opt/homebrew/Cellar/open-ocd/0.11.0/share/openocd/scripts/target/stm32f1x.cfg  -c init -c halt -c "flash write_image erase ./build/$(TARGET).hex" -c reset -c halt -c shutdown
+
 
 #######################################
 # dependencies

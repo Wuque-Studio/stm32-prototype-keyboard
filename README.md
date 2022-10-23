@@ -12,7 +12,7 @@ Middleware: HID
 
 ## Hardware
 
-MCU: Stm32f103C8T6
+MCU: Stm32f103C8T6  
 Bluetooth Module: HC-42
 
 ## Contributor

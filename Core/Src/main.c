@@ -101,9 +101,8 @@ int main(void) {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    keyBoardHIDsub[0] =
-        0x02; // To press shift key<br>keyBoardHIDsub.KEYCODE1=0x04;  // Press A
-              // key
+    keyBoardHIDsub[0] = 0x02; // To press shift key<br>keyBoardHIDsub.
+    keyBoardHIDsub[2] = 0x04; // Press A key
     keyBoardHIDsub[3] = 0x05; // Press B key
     keyBoardHIDsub[4] = 0x06; // Press C key
     USBD_HID_SendReport(&hUsbDeviceFS, keyBoardHIDsub, sizeof(keyBoardHIDsub));

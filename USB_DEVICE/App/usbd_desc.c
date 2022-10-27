@@ -64,9 +64,9 @@
 
 #define USBD_VID     1155
 #define USBD_LANGID_STRING     1033
-#define USBD_MANUFACTURER_STRING     "STMicroelectronics"
+#define USBD_MANUFACTURER_STRING     "Wuque Studio"
 #define USBD_PID_FS     22315
-#define USBD_PRODUCT_STRING_FS     "Prototype Keyboard"
+#define USBD_PRODUCT_STRING_FS     "Stm32 Prototype Keyboard"
 #define USBD_CONFIGURATION_STRING_FS     "HID Config"
 #define USBD_INTERFACE_STRING_FS     "HID Interface"
 

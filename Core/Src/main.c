@@ -20,9 +20,10 @@
 #include "main.h"
 #include "usb_device.h"
 #include "usbd_hid.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "keyboard.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,8 +45,7 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 extern USBD_HandleTypeDef hUsbDeviceFS;
-
-uint8_t keyBoardHIDsub[] = {0, 0, 0, 0, 0, 0, 0, 0};
+char msg_buff[100] = {0};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -92,7 +92,7 @@ int main(void) {
   MX_USART2_UART_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
-
+  sprintf(msg_buff, "Wuque Studio\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -101,18 +101,8 @@ int main(void) {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    keyBoardHIDsub[0] = 0x02; // To press shift key<br>keyBoardHIDsub.
-    keyBoardHIDsub[2] = 0x04; // Press A key
-    keyBoardHIDsub[3] = 0x05; // Press B key
-    keyBoardHIDsub[4] = 0x06; // Press C key
-    USBD_HID_SendReport(&hUsbDeviceFS, keyBoardHIDsub, sizeof(keyBoardHIDsub));
-    HAL_Delay(50);            // Press all key for 50 milliseconds
-    keyBoardHIDsub[0] = 0x00; // To release shift key
-    keyBoardHIDsub[2] = 0x00; // Release A key
-    keyBoardHIDsub[3] = 0x00; // Release B key
-    keyBoardHIDsub[4] = 0x00; // Release C key
-    USBD_HID_SendReport(&hUsbDeviceFS, keyBoardHIDsub, sizeof(keyBoardHIDsub));
-    HAL_Delay(1000); // Repeat this task on every 1 second
+    keyboard_print(msg_buff, strlen(msg_buff));
+    HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }

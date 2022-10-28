@@ -37,6 +37,7 @@ BUILD_DIR = build
 # C sources
 C_SOURCES =  \
 Core/Src/main.c \
+Core/Src/keyboard.c \
 Core/Src/stm32f1xx_it.c \
 Core/Src/stm32f1xx_hal_msp.c \
 USB_DEVICE/App/usb_device.c \
@@ -200,7 +201,7 @@ clean:
 # download to board
 ####################################### 
 download:
-	openocd -f /opt/homebrew/Cellar/open-ocd/0.11.0/share/openocd/scripts/interface/cmsis-dap.cfg -f /opt/homebrew/Cellar/open-ocd/0.11.0/share/openocd/scripts/target/stm32f1x.cfg  -c init -c halt -c "flash write_image erase ./build/$(TARGET).hex" -c reset -c halt -c shutdown
+	openocd -f /opt/homebrew/Cellar/open-ocd/0.11.0/share/openocd/scripts/interface/cmsis-dap.cfg -f /opt/homebrew/Cellar/open-ocd/0.11.0/share/openocd/scripts/target/stm32f1x.cfg -c init -c halt -c "flash write_image erase ./build/$(TARGET).hex" -c reset -c halt -c shutdown
 
 
 #######################################
